@@ -40,7 +40,7 @@ class TestStep extends WizardStep
 
     public function store(): RedirectResponse
     {
-        return redirect('/');
+        return new RedirectResponse('/');
     }
 
     public function isCompleted(?Authenticatable $user): bool
