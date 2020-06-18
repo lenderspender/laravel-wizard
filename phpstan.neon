@@ -1,0 +1,8 @@
+parameters:
+    paths:
+        - src
+        - tests
+    level: 7
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Call to an undefined method Illuminate\\Contracts\\Auth\\Factory|Illuminate\\Contracts\\Auth\\Guard::user\(\).#'
