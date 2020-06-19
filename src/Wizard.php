@@ -43,6 +43,7 @@ class Wizard
 
         return $view->with([
             'wizard' => $this,
+            'currentStep' => $step,
         ]);
     }
 
