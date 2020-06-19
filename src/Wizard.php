@@ -106,7 +106,7 @@ class Wizard
             ->isRequired(auth()->user());
     }
 
-    protected function getStepFromSlug(string $stepSlug): WizardStep
+    public function getStepFromSlug(string $stepSlug): WizardStep
     {
         $wizardStep = $this->steps->first(fn (WizardStep $step) => $step->getStepDetails()->slug() === $stepSlug);
 
