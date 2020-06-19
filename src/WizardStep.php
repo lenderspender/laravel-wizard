@@ -26,4 +26,9 @@ abstract class WizardStep
     {
         return $this->getStepDetails()->slug() === $wizardStep->getStepDetails()->slug();
     }
+
+    public function __toString(): string
+    {
+        return $this->getStepDetails()->slug();
+    }
 }
