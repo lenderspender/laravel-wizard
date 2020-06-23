@@ -20,7 +20,7 @@ You are able to inject any dependencies you need into the step's `view` and `sto
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Borrower\LoanApplicationPhaseTwoSteps;
+namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
@@ -87,7 +87,7 @@ Create a new Controller that will handle your steps.
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Borrower;
+namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use LenderSpender\LaravelWizard\Wizard;
