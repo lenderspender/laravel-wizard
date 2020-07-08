@@ -173,4 +173,17 @@ class WizardTest extends TestCase
         self::assertFalse($wizard->stepIsRequired($firstStep));
         self::assertTrue($wizard->stepIsRequired($secondStep));
     }
+
+    public function test_step_can_be_initialised_in_multiple_ways(): void
+    {
+        $wizard = new Wizard([
+            $firstStep = new TestStep(new StepDetails('First step'), true, false),
+            TestStep::class,
+            [TestStep::class => ['stepDetails' => new StepDetails('Third step')]],
+        ]);
+
+        $steps = $wizard->getSteps()->map(fn (WizardStep $step) => $step->getStepDetails()->name())->toArray();
+
+        self::assertEquals(['First step', 'foo', 'Third step'], $steps);
+    }
 }

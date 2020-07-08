@@ -139,3 +139,15 @@ Route::get('/wizard/{step}', [WizardController::class, 'show']);
 Route::post('/wizard/{step}', [WizardController::class, 'store']);
 ```
 
+### Setup wizard
+
+A new wizard can be initialized by creating a new `Wizard` object.
+
+```php
+
+$wizard = new Wizard([
+    FirstStep::class,
+    new FirstStep($param),
+    [FirstStep::class => ['param' => $param]]
+]);
+```

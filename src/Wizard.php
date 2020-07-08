@@ -16,16 +16,15 @@ class Wizard
 {
     /** @var \Illuminate\Support\Collection<\LenderSpender\LaravelWizard\WizardStep> */
     private Collection $steps;
-    private ?WizardStep $currentStep = null;
     private bool $preserveStepOrder;
     private ?Authenticatable $user;
 
     /**
-     * @param array<string|\LenderSpender\LaravelWizard\WizardStep> $steps
+     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|\LenderSpender\LaravelWizard\WizardStep|array<class-string<\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      */
     public function __construct(array $steps, bool $preserveStepOrder = false, Authenticatable $user = null)
     {
-        $this->steps = collect($steps);
+        $this->steps = $this->parseSteps($steps);
         $this->preserveStepOrder = $preserveStepOrder;
         $this->user = $user;
     }
@@ -115,5 +114,27 @@ class Wizard
         }
 
         return $wizardStep;
+    }
+
+    /**
+     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|\LenderSpender\LaravelWizard\WizardStep|array<class-string<\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
+     *
+     * @return \Illuminate\Support\Collection<\LenderSpender\LaravelWizard\WizardStep>
+     */
+    private function parseSteps(array $steps): Collection
+    {
+        return collect($steps)->map(function ($step) {
+            if ($step instanceof WizardStep) {
+                return $step;
+            }
+
+            if (is_array($step)) {
+                $class = array_key_first($step);
+
+                return app()->makeWith($class, $step[$class]);
+            }
+
+            return app()->make($step);
+        });
     }
 }
