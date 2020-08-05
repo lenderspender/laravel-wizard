@@ -24,10 +24,15 @@ class WizardTest extends TestCase
     {
         $view = Mockery::spy(View::class);
         $wizard = new Wizard([
-            new TestStep(new StepDetails('First step'), true, true, $view),
+            $step = new TestStep(new StepDetails('First step'), true, true, $view),
         ]);
 
-        $view->expects('with')->with(['wizard' => $wizard])->andReturnSelf();
+        $view->expects('with')
+            ->with([
+                'wizard' => $wizard,
+                'currentStep' => $step,
+            ])
+            ->andReturnSelf();
 
         $wizard->view('first-step');
     }

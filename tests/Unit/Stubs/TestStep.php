@@ -16,8 +16,9 @@ class TestStep extends WizardStep
     private StepDetails $stepDetails;
     private bool $isCompleted;
     private bool $isRequired;
+    private ?RedirectResponse $store;
 
-    public function __construct(StepDetails $stepDetails = null, bool $isCompleted = true, bool $isRequired = true, View $view = null)
+    public function __construct(StepDetails $stepDetails = null, bool $isCompleted = true, bool $isRequired = true, View $view = null, RedirectResponse $store = null)
     {
         $this->stepDetails = $stepDetails ?? new StepDetails('foo');
         $this->isCompleted = $isCompleted;
@@ -25,6 +26,9 @@ class TestStep extends WizardStep
 
         if ($view) {
             $this->view = $view;
+        }
+        if ($store) {
+            $this->store = $store;
         }
     }
 
@@ -40,7 +44,7 @@ class TestStep extends WizardStep
 
     public function store(): RedirectResponse
     {
-        return new RedirectResponse('/');
+        return $this->store ?? new RedirectResponse('/');
     }
 
     public function isCompleted(?Authenticatable $user): bool
