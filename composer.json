@@ -26,11 +26,11 @@
   "require-dev": {
     "lenderspender/php-cs-fixer-rules": "dev-master",
     "mockery/mockery": "^1.4.2",
-    "orchestra/testbench": "^5.3",
+    "orchestra/testbench": "^6",
     "phpstan/extension-installer": "^1.0",
     "phpstan/phpstan": "^0.12.14",
     "phpstan/phpstan-mockery": "^0.12.3",
-    "phpunit/phpunit": "^8.5 || ^9.0"
+    "phpunit/phpunit": "^9.0"
   },
   "config": {
     "sort-packages": true
