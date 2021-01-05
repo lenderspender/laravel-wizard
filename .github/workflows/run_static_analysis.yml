@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --no-interaction --prefer-dist --no-suggest
+          composer install --no-interaction --prefer-dist
 
       - name: Execute static analysis
         run: composer run analyse
