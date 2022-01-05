@@ -49,7 +49,7 @@ class WizardTest extends TestCase
             return;
         }
 
-        $this->fail();
+        self::fail();
     }
 
     public function test_invalid_step_order_is_thrown_when_step_order_is_preserved_and_step_is_not_allowed(): void
@@ -67,7 +67,7 @@ class WizardTest extends TestCase
             return;
         }
 
-        $this->fail();
+        self::fail();
     }
 
     public function test_step_is_always_allowed_when_order_is_not_preserved(): void
