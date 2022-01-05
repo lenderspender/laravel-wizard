@@ -93,6 +93,7 @@ class Wizard
 
         return $this->steps
             ->takeWhile(function (WizardStep $step) use ($wizardStep, $user) {
+                // @phpstan-ignore-next-line
                 return ! $step->isRequired($user) || ($step->isRequired($user) && $step->isCompleted($user)) || $step->equals($wizardStep);
             })
             ->contains(fn (WizardStep $step) => $step->equals($wizardStep));
