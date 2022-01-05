@@ -20,7 +20,7 @@ class Wizard
     private ?Authenticatable $user;
 
     /**
-     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|\LenderSpender\LaravelWizard\WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
+     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array<class-string<\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      */
     public function __construct(array $steps, bool $preserveStepOrder = false, Authenticatable $user = null)
     {
@@ -118,7 +118,7 @@ class Wizard
     }
 
     /**
-     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|\LenderSpender\LaravelWizard\WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
+     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array<class-string<\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      *
      * @return \Illuminate\Support\Collection<\LenderSpender\LaravelWizard\WizardStep>
      */
