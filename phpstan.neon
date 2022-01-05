@@ -6,3 +6,4 @@ parameters:
     checkMissingIterableValueType: false
     ignoreErrors:
         - '#Call to an undefined method Illuminate\\Contracts\\Auth\\Factory|Illuminate\\Contracts\\Auth\\Guard::user\(\).#'
+        - '#PHPDoc tag @param has invalid value .+: Unexpected token "<", expected type at offset#'
