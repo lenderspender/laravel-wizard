@@ -20,7 +20,7 @@ class Wizard
     private ?Authenticatable $user;
 
     /**
-     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|\LenderSpender\LaravelWizard\WizardStep|array<class-string<\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
+     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      */
     public function __construct(array $steps, bool $preserveStepOrder = false, Authenticatable $user = null)
     {
@@ -93,6 +93,7 @@ class Wizard
 
         return $this->steps
             ->takeWhile(function (WizardStep $step) use ($wizardStep, $user) {
+                // @phpstan-ignore-next-line
                 return ! $step->isRequired($user) || ($step->isRequired($user) && $step->isCompleted($user)) || $step->equals($wizardStep);
             })
             ->contains(fn (WizardStep $step) => $step->equals($wizardStep));
@@ -117,7 +118,7 @@ class Wizard
     }
 
     /**
-     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|\LenderSpender\LaravelWizard\WizardStep|array<class-string<\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
+     * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      *
      * @return \Illuminate\Support\Collection<\LenderSpender\LaravelWizard\WizardStep>
      */
