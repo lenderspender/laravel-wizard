@@ -38,7 +38,7 @@ jobs:
 
       - name: Run cs-fixer
         run: |
-          vendor/bin/php-cs-fixer fix
+          PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix
 
       - uses: stefanzweifel/git-auto-commit-action@v4.14.1
         with:
