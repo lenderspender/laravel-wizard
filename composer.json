@@ -23,12 +23,12 @@
   },
   "require": {
     "php": "^8.2",
-    "laravel/framework": "^v10.0"
+    "laravel/framework": "^10.0"
   },
   "require-dev": {
     "lenderspender/php-cs-fixer-rules": "dev-master",
     "mockery/mockery": "^1.4.2",
-    "orchestra/testbench": "^v8.0",
+    "orchestra/testbench": "^8.0",
     "phpstan/extension-installer": "^1.0",
     "phpstan/phpstan": "^1.5.0",
     "phpstan/phpstan-mockery": "1.1.0",
