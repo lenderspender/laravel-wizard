@@ -28,17 +28,11 @@ class WizardStepWithChildren extends WizardStep
         return $this->parentStep->getStepDetails();
     }
 
-    /**
-     * @return mixed
-     */
     public function view(?Authenticatable $user)
     {
         return $this->callFirstStepMethod('view', $user);
     }
 
-    /**
-     * @return mixed
-     */
     public function store(?Authenticatable $user)
     {
         return $this->callFirstStepMethod('store', $user);
@@ -67,9 +61,6 @@ class WizardStepWithChildren extends WizardStep
             ->first(fn (WizardStep $step) => ! $step->isCompleted($user));
     }
 
-    /**
-     * @return mixed
-     */
     public function callFirstStepMethod(string $methodName, ?Authenticatable $user)
     {
         if ($this->parentStep->isCompleted($user) && $childStep = $this->getFirstChildStep($user)) {

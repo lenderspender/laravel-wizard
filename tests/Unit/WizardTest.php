@@ -93,7 +93,7 @@ class WizardTest extends TestCase
 
     public function test_storing_fails_redirects_back_with_errors(): void
     {
-        $step = new class() extends WizardStep {
+        $step = new class extends WizardStep {
             public function getStepDetails(): StepDetails
             {
                 return new StepDetails('first step');
@@ -158,7 +158,7 @@ class WizardTest extends TestCase
     {
         $wizard = new Wizard([
             $currentStep = new TestStep(new StepDetails('First step'), false, true),
-             new TestStep(new StepDetails('Second step'), false, true),
+            new TestStep(new StepDetails('Second step'), false, true),
             new TestStep(new StepDetails('Third step'), false, true),
         ]);
 
