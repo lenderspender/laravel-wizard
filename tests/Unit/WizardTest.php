@@ -154,6 +154,39 @@ class WizardTest extends TestCase
         self::assertTrue($thirdStep->equals($wizard->firstStep()));
     }
 
+    public function test_it_returns_the_first_step_as_current_step_if_no_steps_are_completed_as_current_step(): void
+    {
+        $wizard = new Wizard([
+            $currentStep = new TestStep(new StepDetails('First step'), false, true),
+             new TestStep(new StepDetails('Second step'), false, true),
+            new TestStep(new StepDetails('Third step'), false, true),
+        ]);
+
+        self::assertEquals($currentStep, $wizard->currentStep());
+    }
+
+    public function test_it_returns_last_non_completed_step_as_current_step(): void
+    {
+        $wizard = new Wizard([
+            new TestStep(new StepDetails('First step'), true, true),
+            $currentStep = new TestStep(new StepDetails('Second step'), false, true),
+            new TestStep(new StepDetails('Third step'), false, true),
+        ]);
+
+        self::assertEquals($currentStep, $wizard->currentStep());
+    }
+
+    public function test_it_returns_the_last_completed_step_if_all_steps_are_completed_as_current_step(): void
+    {
+        $wizard = new Wizard([
+            new TestStep(new StepDetails('First step'), true, true),
+            new TestStep(new StepDetails('Second step'), true, true),
+            $currentStep = new TestStep(new StepDetails('Third step'), true, true),
+        ]);
+
+        self::assertEquals($currentStep, $wizard->currentStep());
+    }
+
     public function test_getting_steps(): void
     {
         $wizard = new Wizard([

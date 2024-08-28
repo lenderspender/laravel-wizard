@@ -63,6 +63,19 @@ class Wizard
         return $response;
     }
 
+    public function currentStep(): WizardStep
+    {
+        // Return the first step that is required and not completed or return the last completed step
+        return $this->steps
+            ->filter(fn (WizardStep $step) => $step->isRequired($this->user))
+            ->filter(fn (WizardStep $step) => ! $step->isCompleted($this->user))
+            ->first()
+            ?? $this->steps
+                ->filter(fn (WizardStep $step) => $step->isRequired($this->user))
+                ->filter(fn (WizardStep $step) => $step->isCompleted($this->user))
+                ->last();
+    }
+
     public function nextStep(WizardStep $currentStep): ?WizardStep
     {
         return $this->steps
