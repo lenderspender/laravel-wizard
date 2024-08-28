@@ -19,7 +19,7 @@ abstract class WizardStep
      */
     public function callMethod(string $method)
     {
-        return app()->call([$this, $method], []);
+        return app()->call([$this, $method], []); // @phpstan-ignore-line
     }
 
     public function equals(WizardStep $wizardStep): bool

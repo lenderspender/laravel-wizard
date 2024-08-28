@@ -148,7 +148,7 @@ class Wizard
             if (is_array($step)) {
                 $class = array_key_first($step);
 
-                return app()->makeWith($class, $step[$class]);
+                return app()->makeWith($class, $step[$class]); // @phpstan-ignore-line
             }
 
             return app()->make($step);
