@@ -63,6 +63,20 @@ class Wizard
         return $response;
     }
 
+    public function currentStep(): WizardStep
+    {
+        // Return the first step that is required and not completed or return the last completed step
+        $requiredSteps = $this->steps
+            ->filter(fn (WizardStep $step) => $step->isRequired($this->user));
+
+        return $requiredSteps
+            ->filter(fn (WizardStep $step) => ! $step->isCompleted($this->user))
+            ->first()
+            ?? $requiredSteps
+                ->filter(fn (WizardStep $step) => $step->isCompleted($this->user))
+                ->last();
+    }
+
     public function nextStep(WizardStep $currentStep): ?WizardStep
     {
         return $this->steps
@@ -135,7 +149,7 @@ class Wizard
             if (is_array($step)) {
                 $class = array_key_first($step);
 
-                return app()->makeWith($class, $step[$class]);
+                return app()->makeWith($class, $step[$class]); // @phpstan-ignore-line
             }
 
             return app()->make($step);

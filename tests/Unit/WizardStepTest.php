@@ -13,7 +13,7 @@ class WizardStepTest extends TestCase
 {
     public function test_string_casting_is_set_to_step_slug(): void
     {
-        $step = new class() extends WizardStep {
+        $step = new class extends WizardStep {
             public function getStepDetails(): StepDetails
             {
                 return new StepDetails('foo bar');

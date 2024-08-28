@@ -14,12 +14,9 @@ abstract class WizardStep
 
     abstract public function isRequired(?Authenticatable $user): bool;
 
-    /**
-     * @return mixed
-     */
-    public function callMethod(string $method)
+    public function callMethod(string $method): mixed
     {
-        return app()->call([$this, $method], []);
+        return app()->call([$this, $method], []); // @phpstan-ignore-line
     }
 
     public function equals(WizardStep $wizardStep): bool
