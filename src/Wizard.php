@@ -67,7 +67,7 @@ class Wizard
     {
         // Return the first step that is required and not completed or return the last completed step
         $requiredSteps = $this->steps
-            ->filter(fn(WizardStep $step) => $step->isRequired($this->user));
+            ->filter(fn (WizardStep $step) => $step->isRequired($this->user));
 
         return $requiredSteps
             ->filter(fn (WizardStep $step) => ! $step->isCompleted($this->user))
