@@ -22,7 +22,7 @@ class Wizard
     /**
      * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      */
-    public function __construct(array $steps, bool $preserveStepOrder = false, Authenticatable $user = null)
+    public function __construct(array $steps, bool $preserveStepOrder = false, ?Authenticatable $user = null)
     {
         $this->steps = $this->parseSteps($steps);
         $this->preserveStepOrder = $preserveStepOrder;
