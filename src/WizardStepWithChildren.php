@@ -11,11 +11,11 @@ class WizardStepWithChildren extends WizardStep
 {
     public WizardStep $parentStep;
 
-    /** @var \Illuminate\Support\Collection<int, \LenderSpender\LaravelWizard\WizardStep> */
+    /** @var Collection<int, WizardStep> */
     public Collection $childSteps;
 
     /**
-     * @param array<\LenderSpender\LaravelWizard\WizardStep> $children
+     * @param array<WizardStep> $children
      */
     public function __construct(WizardStep $parentStep, array $children)
     {
