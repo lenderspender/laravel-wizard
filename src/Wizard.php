@@ -14,7 +14,7 @@ use LenderSpender\LaravelWizard\Exceptions\StoreStepException;
 
 class Wizard
 {
-    /** @var \Illuminate\Support\Collection<int, \LenderSpender\LaravelWizard\WizardStep> */
+    /** @var Collection<int, WizardStep> */
     private Collection $steps;
     private bool $preserveStepOrder;
     private ?Authenticatable $user;
@@ -22,7 +22,7 @@ class Wizard
     /**
      * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      */
-    public function __construct(array $steps, bool $preserveStepOrder = false, Authenticatable $user = null)
+    public function __construct(array $steps, bool $preserveStepOrder = false, ?Authenticatable $user = null)
     {
         $this->steps = $this->parseSteps($steps);
         $this->preserveStepOrder = $preserveStepOrder;
@@ -137,7 +137,7 @@ class Wizard
     /**
      * @param array<class-string<\LenderSpender\LaravelWizard\WizardStep>|WizardStep|array|<|class-string|<|\LenderSpender\LaravelWizard\WizardStep>, array>> $steps
      *
-     * @return \Illuminate\Support\Collection<int, \LenderSpender\LaravelWizard\WizardStep>
+     * @return Collection<int, WizardStep>
      */
     private function parseSteps(array $steps): Collection
     {

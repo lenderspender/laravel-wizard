@@ -18,7 +18,7 @@ class TestStep extends WizardStep
     private bool $isRequired;
     private ?RedirectResponse $store;
 
-    public function __construct(StepDetails $stepDetails = null, bool $isCompleted = true, bool $isRequired = true, View $view = null, RedirectResponse $store = null)
+    public function __construct(?StepDetails $stepDetails = null, bool $isCompleted = true, bool $isRequired = true, ?View $view = null, ?RedirectResponse $store = null)
     {
         $this->stepDetails = $stepDetails ?? new StepDetails('foo');
         $this->isCompleted = $isCompleted;
